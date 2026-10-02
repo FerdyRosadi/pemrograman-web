@@ -21,7 +21,6 @@
             min-height: 280px;
             background-color: white;
 
-            /* Batas garis kartu */
             border: 2px solid #333;
             border-radius: 10px;
 
@@ -34,7 +33,6 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        /* Bagian foto */
         .foto {
             width: 180px;
             height: 220px;
@@ -49,7 +47,6 @@
             object-fit: cover;
         }
 
-        /* Bagian data */
         .data {
             flex: 1;
         }
@@ -79,12 +76,10 @@
 
     <div class="kartu">
 
-        <!-- FOTO -->
         <div class="foto">
             <img src="fotodiri.jpeg" alt="Foto Mahasiswa">
         </div>
 
-        <!-- DATA MAHASISWA -->
         <div class="data">
 
             <h1>KARTU MAHASISWA</h1>
