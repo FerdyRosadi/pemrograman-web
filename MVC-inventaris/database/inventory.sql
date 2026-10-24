@@ -59,4 +59,5 @@ CREATE TABLE transactions (
         FOREIGN KEY (user_id)
         REFERENCES users(id)
         ON DELETE CASCADE
+<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
