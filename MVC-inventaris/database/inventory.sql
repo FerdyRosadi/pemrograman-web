@@ -43,21 +43,23 @@ CREATE TABLE items (
 
 CREATE TABLE transactions (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    item_id INT NOT NULL,
     user_id INT NOT NULL,
     type ENUM('IN', 'OUT') NOT NULL,
     quantity INT NOT NULL,
     notes VARCHAR(255),
+    item_code VARCHAR(20) NULL,
+    item_name VARCHAR(150) NOT NULL,
+    item_unit VARCHAR(20) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT fk_transactions_item
-        FOREIGN KEY (item_id)
-        REFERENCES items(id)
-        ON DELETE CASCADE,
-
     CONSTRAINT fk_transactions_user
-        FOREIGN KEY (user_id)
-        REFERENCES users(id)
+        FOREIGN KEY (user_id) REFERENCES users(id)
         ON DELETE CASCADE
 <<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> f89d272 (riwayat transaksi pakai snapshot item_name, tanpa FK item_id)

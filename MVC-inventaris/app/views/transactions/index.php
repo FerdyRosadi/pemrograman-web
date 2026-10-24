@@ -33,7 +33,7 @@
                             <span class="badge text-bg-danger">Keluar</span>
                         <?php endif; ?>
                     </td>
-                    <td class="text-end"><?= (int) $t['quantity'] ?> <?= e($t['unit']) ?></td>
+                    <td class="text-end"><?= (int) $t['quantity'] ?> <?= e($t['item_unit']) ?></td>
                     <td><?= e($t['notes'] ?? '-') ?></td>
                     <td><?= e($t['user_name'] ?? '-') ?></td>
                 </tr>
