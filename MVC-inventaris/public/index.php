@@ -7,6 +7,14 @@ $file = ROOT_PATH . '/app/' . $dir . '/' . $class . '.php';
 if (file_exists($file)) { require_once $file; return; }
 }
 });
+
+ini_set('display_errors', APP_DEBUG ? '1' : '0');
+ini_set('log_errors', '1');
+error_reporting(E_ALL);
+
+header('X-Frame-Options: SAMEORIGIN');
+header('X-Content-Type-Options: nosniff');
+header('Referrer-Policy: strict-origin-when-cross-origin');
 // Fallback jika rewrite .htaccess tidak tersedia (PHP built-in server),
 // sekaligus menangani subfolder, mis. http://localhost/inventaris-mvc/public/.
 if (!isset($_GET['url'])) {
@@ -17,6 +25,17 @@ $uri = substr($uri, strlen($basePath));
 }
 $_GET['url'] = trim((string) $uri, '/');
 }
-session_start();
+// Session dengan cookie aman + batas idle.
+Security::startSession();
 
+// Semua POST web wajib membawa token CSRF.
+// API dikecualikan karena memakai bearer token.
+$requestMethod = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+$route = strtolower(trim((string) ($_GET['url'] ?? ''), '/'));
+
+if ($requestMethod === 'POST' && !($route === 'api' || str_starts_with($route, 'api/'))) {
+    Security::requireCsrf();
+}
+
+// Jalankan router
 $app = new App();
