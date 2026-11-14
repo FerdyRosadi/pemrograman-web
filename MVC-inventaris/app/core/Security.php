@@ -96,16 +96,19 @@ class Security
     }
 
     public static function abort(int $status, string $title, string $message): void
-    {
-        http_response_code($status);
-        extract(array_merge(view_shared_data(), [
-            'title' => $title,
-            'status' => $status,
-            'message' => $message,
-        ]));
-        require ROOT_PATH . '/app/views/errors/error.php';
-        exit;
-    }
+{
+    http_response_code($status);
+    $flash = take_flash();
+    $loggedIn = !empty($_SESSION['user']);
+    $user = $_SESSION['user'] ?? null;
+    $current = 'home';
+    $navItems = [];
+    $status = $status;
+    $title = $title;
+    $message = $message;
+    require ROOT_PATH . '/app/views/errors/error.php';
+    exit;
+}
 
     public static function hashToken(string $token): string
     {

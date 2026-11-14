@@ -2,10 +2,11 @@
 
 class Controller
 {
-    public function view(string $view, array $data = []): void
+   public function view(string $view, array $data = []): void
     {
-        extract($data);
-        require ROOT_PATH . '/app/views/' . $view . '.php';
+    $data = array_merge(view_shared_data(), $data);
+    extract($data);
+    require ROOT_PATH . '/app/views/' . $view . '.php';
     }
 
     public function model(string $model) { return new $model(); }
