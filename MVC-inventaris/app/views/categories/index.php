@@ -31,6 +31,7 @@
                         <a href="<?= base_url('categories/edit/' . (int) $c['id']) ?>" class="btn btn-sm btn-outline-secondary">Ubah</a>
                         <form method="post" action="<?= base_url('categories/delete/' . (int) $c['id']) ?>" class="d-inline"
                               onsubmit="return confirm('Hapus kategori ini? Barang di dalamnya tidak ikut terhapus, tetapi menjadi tanpa kategori.')">
+                              <?= csrf_field() ?>
                             <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
                         </form>
                     </td>

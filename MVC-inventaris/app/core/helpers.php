@@ -24,3 +24,47 @@ if (!function_exists('take_flash')) {
         $f = $_SESSION['flash']; unset($_SESSION['flash']); return $f;
     }
 }
+    function csrf_field(): string
+{
+        return Security::csrfField();
+}
+
+    function asset(?string $path): string
+{
+        return $path ? BASEURL . '/' . ltrim($path, '/') : '';
+}
+
+    function tanggal($value, bool $withTime = false): string
+{
+if (!$value) {
+        return '-';
+    }
+
+    $timestamp = strtotime((string) $value);
+    if ($timestamp === false) {
+        return '-';
+    }
+
+    return date($withTime ? 'd/m/Y H:i' : 'd/m/Y', $timestamp);
+}
+function view_shared_data(): array
+{
+    $current = strtolower(explode('/', trim($_GET['url'] ?? 'home', '/'))[0] ?? 'home');
+    if ($current === '' || $current === 'dashboard') {
+        $current = 'home';
+    }
+
+    return [
+        'flash' => take_flash(),
+        'loggedIn' => Middleware::isLoggedIn(),
+        'user' => Middleware::user(),
+        'current' => $current,
+        'navItems' => [
+            'home' => ['label' => 'Dashboard', 'icon' => 'speedometer2', 'url' => ''],
+            'items' => ['label' => 'Barang', 'icon' => 'box', 'url' => 'items'],
+            'categories' => ['label' => 'Kategori', 'icon' => 'tags', 'url' => 'categories'],
+            'transactions' => ['label' => 'Transaksi', 'icon' => 'arrow-left-right', 'url' => 'transactions'],
+            'users' => ['label' => 'Pengguna', 'icon' => 'people', 'url' => 'users'],
+        ],
+    ];
+}

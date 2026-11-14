@@ -78,6 +78,7 @@
                         <form method="post" action="<?= base_url('items/delete/' . (int) $row['id']) ?>" class="d-inline"
                               onsubmit="return confirm('Hapus barang ini? Riwayat transaksinya juga ikut terhapus.')">
                             <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
+                            <?= csrf_field() ?>
                         </form>
                     </td>
                 </tr>
@@ -130,6 +131,7 @@
         <form method="post" action="<?= base_url('transactions/stockIn') ?>" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="stockInLabel">Barang Masuk</h5>
+                 <?= csrf_field() ?>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
             <div class="modal-body">
@@ -157,6 +159,7 @@
         <form method="post" action="<?= base_url('transactions/stockOut') ?>" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="stockOutLabel">Barang Keluar</h5>
+                 <?= csrf_field() ?>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
             <div class="modal-body">
