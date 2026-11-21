@@ -65,6 +65,7 @@ function view_shared_data(): array
             'categories' => ['label' => 'Kategori', 'icon' => 'tags', 'url' => 'categories'],
             'transactions' => ['label' => 'Transaksi', 'icon' => 'arrow-left-right', 'url' => 'transactions'],
             'users' => ['label' => 'Pengguna', 'icon' => 'people', 'url' => 'users'],
-        ],
+],
+
     ];
 }

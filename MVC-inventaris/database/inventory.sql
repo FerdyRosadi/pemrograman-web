@@ -51,15 +51,9 @@ CREATE TABLE transactions (
     item_name VARCHAR(150) NOT NULL,
     item_unit VARCHAR(20) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fk_transactions_user
+        CONSTRAINT fk_transactions_user
         FOREIGN KEY (user_id) REFERENCES users(id)
         ON DELETE CASCADE
-<<<<<<< HEAD
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-<<<<<<< HEAD
-=======
 
 
-
-
->>>>>>> f89d272 (riwayat transaksi pakai snapshot item_name, tanpa FK item_id)

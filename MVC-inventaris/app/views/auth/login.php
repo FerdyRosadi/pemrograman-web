@@ -1,4 +1,4 @@
-<?php $flash = take_flash(); ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
